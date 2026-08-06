@@ -1,40 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# HaloPay Documentation
 
-## Getting Started
+> Official documentation site for the HaloPay offline-first Stellar payment protocol.
 
-First, run the development server:
+This repository houses the official documentation for the HaloPay ecosystem, built with [Next.js](https://nextjs.org) and [Nextra](https://nextra.site/). HaloPay bridges digital humanitarian aid (USDC via SDP/Stellar Aid Assist) with local merchants in no-rail environments using offline-first PWAs, SEP-0007 Payment URIs, and SEP-24 Fiat Off-Ramps.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 📚 Ecosystem Overview
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+HaloPay consists of three primary repositories:
+- **[halopay-api](https://github.com/0dillon/halopay-api)**: The production-grade backend orchestration layer (Node.js/Express) that handles SEP-10 authentication, SEP-12 KYC limits, and SEP-24 interactive withdrawals with MoneyGram.
+- **[halopay-pos](https://github.com/0dillon/halopay-pos)**: The offline-first merchant Point of Sale Progressive Web App (Next.js/React).
+- **[halopay-docs](https://github.com/0dillon/halopay-docs)**: (This repository) The Nextra-powered Markdown documentation site detailing the protocol mechanics and implementation guides.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## 🚀 Getting Started
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+To run the documentation site locally for development or contribution purposes:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+### Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Ensure you have [Node.js](https://nodejs.org/) (v18+) and your preferred package manager installed.
 
-## Learn More
+### Installation
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/0dillon/halopay-docs.git
+   cd halopay-docs
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+4. Open [http://localhost:3002](http://localhost:3002) (or the port specified in your console) to view the live documentation site. The page auto-updates as you edit the MDX files in `src/pages`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+## 🏗️ Architecture & Content
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The documentation uses MDX and is structured inside the `src/pages` directory:
 
-## Deploy on Vercel
+- `index.mdx`: Introduction and ecosystem overview.
+- `protocol-mechanics.mdx`: Detailed breakdown of SEP-0007, SEP-10, SEP-12, and SEP-24 orchestrations.
+- `end-user-guides.mdx`: Merchant POS configuration and fiat off-ramping flows.
+- `developer-guides.mdx`: Local environment variables and setup instructions.
+- `technical-reference.mdx`: Open-source contribution links and Mermaid.js architecture diagrams.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+> **Note:** Mermaid diagrams are natively rendered via `@theguild/remark-mermaid`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+## 🤝 Contributing
+
+We welcome contributions to the HaloPay documentation! Whether it's fixing a typo, updating architecture diagrams, or expanding guides, please see our [CONTRIBUTING.md](./CONTRIBUTING.md) for details on our conventional commit standards and pull request process.
+
+## 🛡️ Security
+
+If you discover a security vulnerability within the documentation or the wider HaloPay ecosystem, please review our [SECURITY.md](./SECURITY.md) guidelines for responsible disclosure. Do not open a public issue.
+
+## 📄 License
+
+This project is licensed under the MIT License.
