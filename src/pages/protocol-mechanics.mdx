@@ -1,0 +1,12 @@
+# Protocol Mechanics
+
+HaloPay uses three Stellar standards for offline payments and fiat off-ramping. The typical transaction size is under $50.
+
+## SEP-0007: URI Scheme
+The `halopay-pos` app generates scannable QR codes for buyers. A QR code holds the merchant's Stellar public key, the asset (USDC), and the amount. The POS uses cached fiat exchange rates to calculate this amount.
+
+## SEP-10 & SEP-12: Authentication and KYC
+Merchants authenticate with a Stellar Anchor via a SEP-10 challenge-response. SEP-12 handles KYC data. The API uploads merchant details and government ID photos using `multipart/form-data`. This takes 2 minutes on average.
+
+## SEP-24: Interactive Settlement
+At the end of the business day, `halopay-api` triggers an automated fiat withdrawal via SEP-24. It converts the merchant's USDC into local fiat through partners like MoneyGram. Settlement costs are typically 1.5% of the transaction volume.

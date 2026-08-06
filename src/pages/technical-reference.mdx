@@ -1,0 +1,41 @@
+# Technical Reference
+
+The HaloPay system architecture consists of a frontend POS, a backend API, and Stellar ecosystem services.
+
+```mermaid
+graph TD
+    subgraph POS
+        UI[POS Keypad and QR Generator]
+        Cache[Cached Exchange Rate Storage]
+        StaleUI[Rate Staleness Indicator]
+        WSClient[WebSocket Payment Receiver]
+    end
+
+    subgraph API
+        SEP10[SEP-10 Auth Handler]
+        SEP12[SEP-12 KYC Ingestion]
+        SEP24[SEP-24 Settlement Orchestrator]
+        HorizonListener[Horizon Event Stream Listener]
+        WSServer[WebSocket Event Broadcaster]
+    end
+
+    subgraph Stellar
+        Anchor[Stellar Anchor]
+        Horizon[Stellar Horizon Node]
+    end
+
+    UI -->|Generate QR| Cache
+    UI -->|Connect WS| WSServer
+    WSServer -->|Real-time payment notification| WSClient
+    SEP10 -->|Challenge / Response| Anchor
+    SEP12 -->|Multipart KYC ID Photo| Anchor
+    SEP24 -->|Programmatic USDC Off-Ramp| Anchor
+    HorizonListener -->|Stream Payment Events| Horizon
+    HorizonListener -->|Trigger Broadcast| WSServer
+```
+
+## Smart Contracts and APIs
+HaloPay calls the Anchor API to initiate SEP-24 deposits and withdrawals. 
+When a payment event arrives from Horizon, the `HorizonListener` verifies the transaction hash. It then alerts the `WSServer` to push a success message to the POS client.
+
+See the [Protocol Mechanics](/protocol-mechanics) page for standard interactions.

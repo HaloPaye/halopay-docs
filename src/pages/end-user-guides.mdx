@@ -1,0 +1,24 @@
+# End-User Guides
+
+This guide explains how merchants use the HaloPay POS terminal in daily operations.
+
+## 1. Onboarding and KYC
+Merchants complete KYC before receiving payments. This process usually clears within 24 hours.
+1. Open the HaloPay app.
+2. Go to **Merchant Settings**.
+3. Upload front and back photos of a valid Government ID.
+4. Take a clear selfie.
+5. Submit for compliance review.
+
+## 2. Receiving Offline Payments
+You can accept payments without internet access.
+1. Enter the fiat amount on the POS keypad.
+2. The POS calculates the USDC amount using a cached exchange rate.
+3. The app displays a SEP-0007 QR code.
+4. The buyer scans the QR code with a Stellar wallet (e.g. Vibrant) and signs the transaction.
+
+## 3. End-of-Day Settlement
+When you reconnect to the internet, the POS processes settlements.
+1. The POS syncs offline logs to the backend.
+2. The backend converts USDC balances through a SEP-24 off-ramp.
+3. Funds arrive in your local bank account or mobile wallet. Transfer times range from 1 to 3 hours depending on the local anchor.
