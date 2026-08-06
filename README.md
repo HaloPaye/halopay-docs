@@ -1,61 +1,66 @@
 # HaloPay Documentation
 
-> Official documentation site for the HaloPay offline-first Stellar payment protocol.
+Official documentation repository for the HaloPay offline-first Stellar payment protocol.
 
-This repository houses the official documentation for the HaloPay ecosystem, built with [Next.js](https://nextjs.org) and [Nextra](https://nextra.site/). HaloPay bridges digital humanitarian aid (USDC via SDP/Stellar Aid Assist) with local merchants in no-rail environments using offline-first PWAs, SEP-0007 Payment URIs, and SEP-24 Fiat Off-Ramps.
+This repository houses the technical documentation for the HaloPay ecosystem, generated via Next.js and Nextra. HaloPay facilitates the bridging of digital humanitarian aid (USDC via SDP/Stellar Aid Assist) with local merchants operating in environments devoid of traditional payment rails. The protocol leverages offline-first Progressive Web Applications (PWAs), SEP-0007 Payment URIs, and SEP-24 Fiat Off-Ramps.
 
-## 📚 Ecosystem Overview
+## Ecosystem Architecture
 
-HaloPay consists of three primary repositories:
-- **[halopay-api](https://github.com/0dillon/halopay-api)**: The production-grade backend orchestration layer (Node.js/Express) that handles SEP-10 authentication, SEP-12 KYC limits, and SEP-24 interactive withdrawals with MoneyGram.
-- **[halopay-pos](https://github.com/0dillon/halopay-pos)**: The offline-first merchant Point of Sale Progressive Web App (Next.js/React).
-- **[halopay-docs](https://github.com/0dillon/halopay-docs)**: (This repository) The Nextra-powered Markdown documentation site detailing the protocol mechanics and implementation guides.
+The HaloPay protocol is distributed across three primary repositories to ensure separation of concerns and independent deployment lifecycles:
 
-## 🚀 Getting Started
+* **[halopay-api](https://github.com/0dillon/halopay-api)**: The backend orchestration layer (Node.js/Express). Responsible for SEP-10 authentication, SEP-12 KYC limits processing, and SEP-24 interactive withdrawals with MoneyGram. Features strict OWASP Top 10 mitigation and boundary condition handling.
+* **[halopay-pos](https://github.com/0dillon/halopay-pos)**: The merchant-facing Point of Sale Progressive Web App (Next.js/React). Engineered for low-bandwidth, offline-first environments.
+* **[halopay-docs](https://github.com/0dillon/halopay-docs)**: (This repository) The centralized documentation site detailing protocol mechanics, implementation guides, and API specifications.
 
-To run the documentation site locally for development or contribution purposes:
+## Local Deployment
 
-### Prerequisites
+To run the documentation site locally for development, review, or contribution:
 
-Ensure you have [Node.js](https://nodejs.org/) (v18+) and your preferred package manager installed.
+### System Requirements
 
-### Installation
+* Node.js (v18.0.0 or higher)
+* npm (v9.0.0 or higher)
 
-1. Clone the repository:
+### Installation Steps
+
+1. Clone the repository to your local environment:
    ```bash
    git clone https://github.com/0dillon/halopay-docs.git
    cd halopay-docs
    ```
-2. Install dependencies:
+
+2. Install all required dependencies:
    ```bash
    npm install
    ```
-3. Start the development server:
+
+3. Initialize the local development server:
    ```bash
    npm run dev
    ```
-4. Open [http://localhost:3002](http://localhost:3002) (or the port specified in your console) to view the live documentation site. The page auto-updates as you edit the MDX files in `src/pages`.
 
-## 🏗️ Architecture & Content
+4. Navigate to `http://localhost:3002` in a compatible web browser. The application supports hot-module replacement (HMR) for all changes applied to `.mdx` files within the `src/pages` directory.
 
-The documentation uses MDX and is structured inside the `src/pages` directory:
+## Documentation Structure
 
-- `index.mdx`: Introduction and ecosystem overview.
-- `protocol-mechanics.mdx`: Detailed breakdown of SEP-0007, SEP-10, SEP-12, and SEP-24 orchestrations.
-- `end-user-guides.mdx`: Merchant POS configuration and fiat off-ramping flows.
-- `developer-guides.mdx`: Local environment variables and setup instructions.
-- `technical-reference.mdx`: Open-source contribution links and Mermaid.js architecture diagrams.
+All content is authored in MDX format and organized within the `src/pages` directory. The routing is determined by the filesystem structure:
 
-> **Note:** Mermaid diagrams are natively rendered via `@theguild/remark-mermaid`.
+* `index.mdx`: Core introduction and ecosystem overview.
+* `protocol-mechanics.mdx`: In-depth technical breakdown of SEP-0007, SEP-10, SEP-12, and SEP-24 orchestration flows.
+* `end-user-guides.mdx`: Configuration and operational guides for merchant POS and fiat off-ramping.
+* `developer-guides.mdx`: Instructions for environment configuration, local deployment, and testing.
+* `technical-reference.mdx`: Open-source repository links and Mermaid.js architecture diagrams.
 
-## 🤝 Contributing
+Note: Mermaid diagrams are natively supported and rendered at compile-time via `@theguild/remark-mermaid`.
 
-We welcome contributions to the HaloPay documentation! Whether it's fixing a typo, updating architecture diagrams, or expanding guides, please see our [CONTRIBUTING.md](./CONTRIBUTING.md) for details on our conventional commit standards and pull request process.
+## Contribution Guidelines
 
-## 🛡️ Security
+HaloPay adheres to strict open-source contribution standards. Prior to submitting a pull request, contributors must review the [CONTRIBUTING.md](./CONTRIBUTING.md) document. All commits must follow the Conventional Commits specification.
 
-If you discover a security vulnerability within the documentation or the wider HaloPay ecosystem, please review our [SECURITY.md](./SECURITY.md) guidelines for responsible disclosure. Do not open a public issue.
+## Security Policies
 
-## 📄 License
+Security is a primary concern for the HaloPay ecosystem. If you discover a vulnerability within the documentation site or the core protocol, please follow the responsible disclosure guidelines outlined in [SECURITY.md](./SECURITY.md). Public disclosure prior to remediation is strictly prohibited.
 
-This project is licensed under the MIT License.
+## License
+
+This software is distributed under the MIT License.
