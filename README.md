@@ -1,5 +1,11 @@
 # HaloPay Documentation
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Node.js Version](https://img.shields.io/badge/Node.js-%3E%3D18.0.0-brightgreen.svg)](https://nodejs.org)
+[![Framework: Next.js](https://img.shields.io/badge/Framework-Next.js-black.svg?logo=next.js)](https://nextjs.org)
+[![Stellar Ecosystem](https://img.shields.io/badge/Ecosystem-Stellar-black.svg?logo=stellar)](https://stellar.org)
+[![Drips Wave](https://img.shields.io/badge/Funding-Drips_Wave-blueviolet.svg)](https://www.drips.network/)
+
 Official documentation repository for the HaloPay offline-first Stellar payment protocol.
 
 This repository houses the technical documentation for the HaloPay ecosystem, generated via Next.js and Nextra. HaloPay facilitates the bridging of digital humanitarian aid (USDC via SDP/Stellar Aid Assist) with local merchants operating in environments devoid of traditional payment rails. The protocol leverages offline-first Progressive Web Applications (PWAs), SEP-0007 Payment URIs, and SEP-24 Fiat Off-Ramps.
