@@ -10,6 +10,6 @@ export default {
     }
   },
   footer: {
-    text: 'HaloPay - Stellar Drips Wave',
+    text: 'HaloPay',
   },
 }

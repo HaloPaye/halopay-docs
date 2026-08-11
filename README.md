@@ -4,7 +4,7 @@
 [![Node.js Version](https://img.shields.io/badge/Node.js-%3E%3D18.0.0-brightgreen.svg)](https://nodejs.org)
 [![Framework: Next.js](https://img.shields.io/badge/Framework-Next.js-black.svg?logo=next.js)](https://nextjs.org)
 [![Stellar Ecosystem](https://img.shields.io/badge/Ecosystem-Stellar-black.svg?logo=stellar)](https://stellar.org)
-[![Drips Wave](https://img.shields.io/badge/Funding-Drips_Wave-blueviolet.svg)](https://www.drips.network/)
+
 
 Official documentation repository for the HaloPay offline-first Stellar payment protocol.
 
