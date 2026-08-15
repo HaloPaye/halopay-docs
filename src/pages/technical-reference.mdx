@@ -1,8 +1,9 @@
 # Technical Reference
 
-The HaloPay system architecture consists of a frontend POS, a backend API, and Stellar ecosystem services.
+The HaloPay infrastructure separates the presentation layer from the settlement logic. The frontend point-of-sale application handles all user interactions and offline cryptographic payload generation. The backend API manages state synchronization, identity verification, and communication with the Stellar blockchain. 
 
 ```mermaid
+%%{init: {'themeVariables': { 'fontSize': '20px' }, 'flowchart': { 'nodeSpacing': 100, 'rankSpacing': 100 }}}%%
 graph TD
     subgraph POS
         UI[POS Keypad and QR Generator]
@@ -34,8 +35,8 @@ graph TD
     HorizonListener -->|Trigger Broadcast| WSServer
 ```
 
-## Smart Contracts and APIs
-HaloPay calls the Anchor API to initiate SEP-24 deposits and withdrawals. 
-When a payment event arrives from Horizon, the `HorizonListener` verifies the transaction hash. It then alerts the `WSServer` to push a success message to the POS client.
+## Component Interactions
 
-See the [Protocol Mechanics](/protocol-mechanics) page for standard interactions.
+The frontend client relies on `exchange-rate.ts` to query `localStorage` for recent rate data. The `StalenessIndicator` evaluates this timestamp against the system clock to update the UI. The `qr-generator.ts` module then constructs the final SEP-0007 string using the calculated crypto amount and the merchant's public key. 
+
+The backend relies on `auth.routes.ts` and `sep10.service.ts` to manage handshake challenges and verify cryptographic signatures. Real-time notifications run through `horizon.service.ts`, which filters the Stellar Horizon firehose for merchant transactions. It passes these events to `websocket.service.ts`, which broadcasts JSON payloads to connected clients, triggering haptic success alerts in the POS interface.

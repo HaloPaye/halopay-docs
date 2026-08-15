@@ -1,10 +1,18 @@
 # Introduction
 
-Welcome to HaloPay documentation.
+HaloPay bridges the gap between digital humanitarian aid and local commerce in regions lacking reliable internet infrastructure. It functions as an offline-first Point-of-Sale and settlement protocol built natively on the Stellar blockchain. The protocol targets the specific failure points of modern digital banking in emerging markets.
 
-HaloPay is an offline-first Point-of-Sale (POS) and settlement protocol on the Stellar network. It enables merchants in crisis zones to accept digital humanitarian aid (like USDC) and settle it into local fiat. In 2023, 1.4 billion adults remained unbanked. HaloPay targets this demographic by bridging digital assets and cash.
+Merchants operating in crisis zones use the system to accept digital assets like USDC. They convert these assets directly into local fiat currency without relying on legacy payment processors. Over 1.4 billion adults globally remain unbanked, locked out of the digital economy by stringent banking requirements and poor regional infrastructure. 
+
+Traditional payment rails fail entirely when cellular networks collapse. Credit card terminals and standard mobile money applications cannot authorize transactions without a live connection to a central server. HaloPay solves this systemic vulnerability by decentralizing the checkout process. It decouples the transaction authorization from immediate network access, allowing local commerce to continue during rolling blackouts.
 
 ## Why HaloPay?
-- **Offline-First**: Generate payment QR codes without an internet connection. The system caches exchange rates for up to 48 hours.
-- **Stellar Native**: Built directly on Stellar. It uses SEP-10, SEP-12, and SEP-24 standards.
-- **Instant Settlement**: Off-ramp transactions process in under 5 seconds. Fees average $0.00001 per transaction.
+
+**Offline-First Resilience**
+The architecture guarantees commerce survives infrastructure blackouts. The system caches local exchange rates for up to 48 hours. Merchants input a fiat amount into their device. The POS calculates the USDC equivalent using the stored rate and generates a standard QR code. The customer scans this code with an internet-connected wallet to broadcast the transaction. The merchant's device requires zero connectivity to authorize the sale.
+
+**Stellar Native Integration**
+Ecosystem standards form the backbone of the protocol. HaloPay implements SEP-10 for cryptographic authentication. It verifies wallet ownership before processing requests. SEP-12 handles the secure ingestion of Know Your Customer data required by regulators. SEP-24 automates the final fiat off-ramp. Aggregated USDC balances convert into local currency via regional anchors like MoneyGram.
+
+**Instant Settlement**
+Network efficiency drives the viability of micro-transactions. Settlement finality occurs in under five seconds once a transaction hits the ledger. Processing fees average a fraction of a cent per payment. High-friction environments demand low-overhead solutions. HaloPay delivers robust financial routing without the fragility of constant server dependency.

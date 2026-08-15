@@ -1,37 +1,41 @@
 # Developer Guides
 
-Set up the HaloPay environment locally to build and test features. 
+Set up the HaloPay environment locally to build and test features.
 
 ## Prerequisites
 - Node.js (v18+)
 - Stellar testnet account
 - PostgreSQL (if running a local database)
 
-## Setup halopay-api
-Clone the repository and run the API.
+## Initializing the API Backend
+The `halopay-api` repository houses the Express server handling authentication, KYC routing, and webhook ingestion. Clone the repository to your local workspace and resolve dependencies.
+
 ```bash
 cd halopay-api
 npm install
 npm run dev
 ```
 
-### Environment Variables
-Configure these variables in your `.env` file.
+The server binds to port 4000 by default and initializes the WebSocket listener on the `/ws/payments` route. You must define several critical environment variables in a local `.env` file to establish network connectivity.
+
 | Variable | Description |
 |---|---|
-| `PORT` | API Port (default: 3000) |
-| `STELLAR_NETWORK` | `TESTNET` or `PUBLIC` |
-| `ANCHOR_HOME_DOMAIN` | Stellar Anchor domain for SEP-10 |
-| `SIGNING_SEED` | Merchant custodian seed |
+| `PORT` | Defines the listening port for the Express HTTP server. |
+| `STELLAR_NETWORK` | Dictates the target ledger. Acceptable values are `TESTNET` or `PUBLIC`. |
+| `ANCHOR_HOME_DOMAIN` | Specifies the domain of the liquidity partner for SEP-10 challenge generation. |
+| `SIGNING_SEED` | Holds the private Ed25519 cryptographic key for signing automated anchor requests. |
 
-## Setup halopay-pos
-Clone the repository and run the frontend POS.
+## Bootstrapping the POS Client
+The `halopay-pos` repository contains the Next.js frontend. Navigate into the directory, install dependencies, and launch the application.
+
 ```bash
 cd halopay-pos
 npm install
 npm run dev
 ```
-The POS terminal starts on port `3001` by default.
 
-## Next Steps
-Read the [Technical Reference](/technical-reference) for architectural details. If you want to contribute, review the [Contributing Guide](/contributing).
+The Next.js framework compiles the React components and launches the local server on port 3000. 
+
+The application utilizes a service worker for offline caching. You must test PWA functionality using a Chromium-based browser with network throttling enabled in the developer tools. Simulate an offline state to verify the QR generator logic successfully constructs URIs using the fallback exchange rates stored in local storage. 
+
+Review the technical reference documentation to understand the event lifecycle between the frontend components and the backend WebSocket broadcaster.
