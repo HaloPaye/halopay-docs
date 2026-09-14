@@ -12,11 +12,13 @@ This repository houses the technical documentation for the HaloPay ecosystem, ge
 
 ## Ecosystem Architecture
 
-The HaloPay protocol is distributed across three primary repositories to ensure separation of concerns and independent deployment lifecycles:
+The HaloPay protocol is distributed across focused repositories to ensure separation of concerns and independent deployment lifecycles:
 
-* **[halopay-api](https://github.com/0dillon/halopay-api)**: The backend orchestration layer (Node.js/Express). Responsible for SEP-10 authentication, SEP-12 KYC limits processing, and SEP-24 interactive withdrawals with MoneyGram. Features strict OWASP Top 10 mitigation and boundary condition handling.
-* **[halopay-pos](https://github.com/0dillon/halopay-pos)**: The merchant-facing Point of Sale Progressive Web App (Next.js/React). Engineered for low-bandwidth, offline-first environments.
-* **[halopay-docs](https://github.com/0dillon/halopay-docs)**: (This repository) The centralized documentation site detailing protocol mechanics, implementation guides, and API specifications.
+* **[halopay-mesh-relayer](https://github.com/HaloPaye/halopay-mesh-relayer)**: Asynchronous Rust daemon enabling peer-to-peer offline transaction gossip and double-spend conflict resolution over BLE and LoRa.
+* **[halopay-yield-contracts](https://github.com/HaloPaye/halopay-yield-contracts)**: Soroban smart contracts and autonomous Python orchestrator managing merchant liquidity pools and treasury yields on Stellar.
+* **[halopay-api](https://github.com/HaloPaye/halopay-api)**: Backend orchestration and anchor layer (Node.js/Express). Handles SEP-10 authentication, SEP-12 KYC processing, SEP-24/38 fiat conversions, and Horizon event streaming.
+* **[halopay-pos](https://github.com/HaloPaye/halopay-pos)**: Merchant-facing Point of Sale Progressive Web App (Next.js/React). Engineered for offline-first operation and SEP-0007 payment requests.
+* **[halopay-docs](https://github.com/HaloPaye/halopay-docs)**: (This repository) Centralized documentation site detailing protocol mechanics, implementation guides, and API specifications.
 
 ## Local Deployment
 
